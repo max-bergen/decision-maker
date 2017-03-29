@@ -36,11 +36,33 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/api/users", usersRoutes(knex));
+// app.use("/api/users", usersRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.post("/", (req, res) => {
+  // posts create form data to database
+});
+
+app.get("/:adminID", (req, res) => {
+  //Code to generate page at specific admin link
+  res.render("admin");
+});
+
+app.get("/:userID", (req, res) => {
+  //Code to get poll at specific userID
+  res.render("poll");
+});
+
+app.post("/:userID", (req, res) => {
+  // posts result form data to database
+});
+
+app.get("/submitted", (req, res) => {
+  res.render("submitted");
 });
 
 app.listen(PORT, () => {

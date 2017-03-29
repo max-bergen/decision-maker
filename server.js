@@ -45,6 +45,8 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   // posts create form data to database
+  const adminID = generateRandomString();
+  const userID = generateRandomString();
 });
 
 app.get("/:adminID", (req, res) => {
@@ -68,3 +70,14 @@ app.get("/submitted", (req, res) => {
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+//Generates random string, used for admin and user links
+function generateRandomString() {
+  const charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let rand = '';
+
+  for (let i = 0; i < 10; i ++) {
+    rand += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return rand;
+}

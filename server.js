@@ -57,14 +57,12 @@ app.post("/", (req, res) => {
    userUrl: userID,
    voteCount: 0
   }
-  console.log(newPoll);
-  console.log(addToPoll(newPoll));
- // const option = {
- //   option: req.body.option,
- //   description: req.body.description,
- //   pollID: "bleh",
- //   submitCount: 0
- // }
+  const option = {
+   option: req.body.option,
+   description: req.body.description,
+   submitCount: 0
+ }
+  addToPoll(newPoll, option);
 });
 
 app.get("/:adminID", (req, res) => {

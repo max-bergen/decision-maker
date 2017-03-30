@@ -1,0 +1,22 @@
+body {
+  background-color: #EEE; }
+  body h1 {
+    color: #244751; }
+
+.container {
+  margin: auto;
+  padding-top: 140px; }
+
+#nav-bar {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  margin: 0;
+  padding-left: 2em;
+  padding-right: 2em;
+  font-family: 'Roboto Condensed', sans-serif;
+  z-index: 3; }
+
+/*# sourceMappingURL=main.css.map */

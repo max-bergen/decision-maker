@@ -15,6 +15,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 const addToPoll   = require('./poll');
+const mailGun     = require("public/scripts/mailgun");
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");

@@ -14,6 +14,8 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
+const addToPoll   = require('./poll');
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
@@ -47,6 +49,22 @@ app.post("/", (req, res) => {
   // posts create form data to database
   const adminID = generateRandomString();
   const userID = generateRandomString();
+
+  const newPoll = {
+   email: req.body.email,
+   title: req.body.title,
+   adminUrl: adminID,
+   userUrl: userID,
+   voteCount: 0
+  }
+  console.log(newPoll);
+  console.log(addToPoll(newPoll));
+ // const option = {
+ //   option: req.body.option,
+ //   description: req.body.description,
+ //   pollID: "bleh",
+ //   submitCount: 0
+ // }
 });
 
 app.get("/:adminID", (req, res) => {

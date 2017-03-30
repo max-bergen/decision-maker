@@ -67,12 +67,16 @@ app.post("/", (req, res) => {
   mailGun(req.body.email, req.body.title, adminID, userID);
 });
 
-app.get("/:adminID", (req, res) => {
+app.get("/submitted", (req, res) => {
+  res.render("submitted");
+});
+
+app.get("/admin/:adminID", (req, res) => {
   //Code to generate page at specific admin link
   res.render("admin");
 });
 
-app.get("/:userID", (req, res) => {
+app.get("/user/:userID", (req, res) => {
   //Code to get poll at specific userID
   res.render("poll");
 });
@@ -81,9 +85,6 @@ app.post("/:userID", (req, res) => {
   // posts result form data to database
 });
 
-app.get("/submitted", (req, res) => {
-  res.render("submitted");
-});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

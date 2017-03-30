@@ -15,7 +15,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 const addToPoll   = require('./poll');
-const mailGun     = require("public/scripts/mailgun");
+const mailGun     = require("./public/scripts/mailgun");
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -64,6 +64,7 @@ app.post("/", (req, res) => {
    submitCount: 0
  }
   addToPoll(newPoll, option);
+  mailGun(req.body.email, req.body.title, adminID, userID);
 });
 
 app.get("/:adminID", (req, res) => {

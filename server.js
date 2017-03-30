@@ -87,13 +87,17 @@ app.get("/admin/:adminID", (req, res) => {
   res.render("admin");
 });
 
-app.get("/user/:userID", (req, res) => {
+
+//("/user/:userID")
+app.get("/user/poll", (req, res) => {
   //Code to get poll at specific userID
   res.render("poll");
 });
 
-app.post("/:userID", (req, res) => {
+//("/user/:userID")
+app.post("/user/poll", (req, res) => {
   // posts result form data to database
+  res.redirect("/submitted");
 });
 
 

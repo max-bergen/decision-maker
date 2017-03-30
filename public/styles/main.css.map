@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,IAAK;EACH,gBAAgB,EAAE,IAAI;EAEtB,OAAG;IACD,KAAK,EAAE,OAAO;;AAKlB,UAAU;EAET,WAAW,EAAE,IAAI;;AAIlB,IAAK;EACH,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG;;ACjBlB,QAAS;EACP,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC",
-"sources": ["../../styles/scss/_layout.scss","../../styles/scss/_nav.scss"],
+"mappings": "AAAA,IAAK;EACH,gBAAgB,EAAE,IAAI;EAEtB,OAAG;IACD,KAAK,EAAE,OAAO;;AAKlB,UAAU;EAET,WAAW,EAAE,IAAI;;AAIlB,IAAK;EACH,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG;;ACjBlB,QAAS;EACP,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC;;ACHX,kCAAmC;EAC5B,MAAM,EAAE,IAAI",
+"sources": ["../../styles/scss/_layout.scss","../../styles/scss/_nav.scss","../../styles/scss/_poll.scss"],
 "names": [],
 "file": "main.css"
 }

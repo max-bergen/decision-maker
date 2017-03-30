@@ -6,43 +6,141 @@
   </head>
 
   <body>
-  <main class="container">
-  <form action="/" method="POST" class="form-horizontal">
+ <main class="container">
+  <form id="pollForm" action="/" method="POST" class="form-horizontal">
     <div class= "form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class='col-sm-10'>
+      <label class="control-label col-xs-1" for="email">Email:</label>
+      <div class='col-xs-4'>
         <input class= ".formcontrol" name="email" type="email" placeholder="Enter email">
       </div>
     </div>
 
     <div class= "form-group">
-      <label class="control-label col-sm-2" for="email">Title:</label>
-      <div class='col-sm-10'>
-       <input class= ".formcontrol" name="title" type="text" placeholder="Title">
+      <label class="control-label col-xs-1" for="email" data-options="1" id="title">Title:</label>
+      <div class='col-xs-4'>
+       <input class= ".formcontrol" name="title" type="text" placeholder="Title"/>
       </div>
     </div>
 
-    <div class= "form-group">
-      <label class="control-label col-sm-2" for="email">Option:</label>
-      <div class='col-sm-10'>
-        <input class= ".formcontrol" name="option" type= "text" placeholder="Option">
+    <div class= "form-group" id= "pollTemplate1">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+      <input class= ".formcontrol" name="option1" type= "text" placeholder="Option"/>
+      </div>
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description1" type= "text">Description
+        </textarea>
       </div>
     </div>
 
-    <div class= "form-group">
-      <label class="control-label col-sm-2" for="email">Description:</label>
-      <div class='col-sm-10'>
-      <input class= ".formcontrol" name="description" type= "text" placeholder="Description">
+    <!--Template for adding new field-->
+    <div class="form-group hide" id= "pollTemplate2">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option2" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description2" type= "text">Description
+        </textarea>
       </div>
     </div>
 
+
+    <div class="form-group hide" id= "pollTemplate3">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option3" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description3" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group hide" id= "pollTemplate4">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option4" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description4" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group hide" id= "pollTemplate5">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option5" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description5" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group hide" id= "pollTemplate6">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option6" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description6" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+     <div class= "form-group">
+      <div class="col-xs-5"><button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+      </div>
+       <div class="col-xs-5"><button type="button" class="btn btn-default minusButton hide"><i class="fa fa-minus"></i></button>
+      </div>
+
+    </div>
+
     <div class= "form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-default" type="submit">Submit</button>
+      <div class="col-xs-5 col-xs-offset-1">
+        <button class="btn btn-default" type="submit">Submit</button>
+      </div>
     </div>
-    </div>
-    </form>
-    </div>
-  </main>
+  </form>
+
+<script>
+  $('.addButton').click(function() {
+    var currLoc = $('#title').data("options");
+    if(currLoc === 1){
+      $('.minusButton').removeClass("hide");
+    }
+    if(currLoc === 5){
+      $('.addButton').addClass("hide");
+    }
+    var newLoc = ($('#title').data("options")+1);
+    $('#pollTemplate'+newLoc).removeClass("hide");
+    $('#title').data("options", newLoc);
+    console.log($('#title').data("options"));
+  });
+
+  $('.minusButton').click(function() {
+    var currLoc = $('#title').data("options");
+    if(currLoc === 2){
+      $('.minusButton').addClass("hide");
+    }
+    if(currLoc === 6){
+      $('.addButton').removeClass("hide");
+    }
+    var newLoc = ($('#title').data("options")-1);
+    $('#pollTemplate'+currLoc).addClass("hide");
+    $('#title').data("options", newLoc);
+    console.log($('#title').data("options"));
+  });
+</script>
+</main>
   </body>
 </html>

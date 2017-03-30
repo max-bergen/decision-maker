@@ -15,5 +15,5 @@ module.exports = function addToPoll(poll, option) {
     .catch(function(err){
       console.log(err);
     })
-  knex.destroy();
+  // knex.destroy();
 }

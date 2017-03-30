@@ -4,7 +4,11 @@ body {
     color: #244751; }
 
 .container {
-  padding-top: 140px; }
+  padding-top: 80px; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100; }
 
 #nav-bar {
   position: fixed;

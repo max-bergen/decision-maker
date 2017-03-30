@@ -6,7 +6,7 @@
   </head>
 
   <body>
- <!--  <main class="container"> -->
+ <main class="container">
   <form id="pollForm" action="/" method="POST" class="form-horizontal">
     <div class= "form-group">
       <label class="control-label col-xs-1" for="email">Email:</label>
@@ -16,40 +16,93 @@
     </div>
 
     <div class= "form-group">
-      <label class="control-label col-xs-1" for="email">Title:</label>
+      <label class="control-label col-xs-1" for="email" data-options="1" id="title">Title:</label>
       <div class='col-xs-4'>
        <input class= ".formcontrol" name="title" type="text" placeholder="Title"/>
       </div>
     </div>
 
-    <div class= "form-group">
+    <div class= "form-group" id= "pollTemplate1">
       <label class="control-label col-xs-1" for="email">Option:</label>
       <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option" type= "text" placeholder="Option"/>
+      <input class= ".formcontrol" name="option1" type= "text" placeholder="Option"/>
       </div>
-
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description" type= "text">Description
+        <textarea class= ".formcontrol" name="description1" type= "text">Description
         </textarea>
-      </div>
-
-      <div class="col-xs-1"><button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
       </div>
     </div>
 
     <!--Template for adding new field-->
-    <div class="form-group hide" id= "pollTemplate">
+    <div class="form-group hide" id= "pollTemplate2">
       <label class="control-label col-xs-1" for="email">Option:</label>
       <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option" type= "text" placeholder="Option"/>
+        <input class= ".formcontrol" name="option2" type= "text" placeholder="Option"/>
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description" type= "text">Description
+        <textarea class= ".formcontrol" name="description2" type= "text">Description
         </textarea>
       </div>
-      <div class="col-xs-1"><button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+    </div>
+
+
+    <div class="form-group hide" id= "pollTemplate3">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option3" type= "text" placeholder="Option"/>
       </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description3" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group hide" id= "pollTemplate4">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option4" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description4" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group hide" id= "pollTemplate5">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option5" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description5" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group hide" id= "pollTemplate6">
+      <label class="control-label col-xs-1" for="email">Option:</label>
+      <div class='col-xs-4'>
+        <input class= ".formcontrol" name="option6" type= "text" placeholder="Option"/>
+      </div>
+
+      <div class='col-xs-4'>
+        <textarea class= ".formcontrol" name="description6" type= "text">Description
+        </textarea>
+      </div>
+    </div>
+
+     <div class= "form-group">
+      <div class="col-xs-5"><button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+      </div>
+       <div class="col-xs-5"><button type="button" class="btn btn-default minusButton hide"><i class="fa fa-minus"></i></button>
+      </div>
+
     </div>
 
     <div class= "form-group">
@@ -60,82 +113,34 @@
   </form>
 
 <script>
-$(document).ready(function() {
-    var optionValidators = {
-            row: '.col-xs-4',   // The title is placed inside a <div class="col-xs-4"> element
-            validators: {
-                notEmpty: {
-                    message: 'The option is required'
-                }
-            }
-        },
-        descriptionValidators = {
-            row: '.col-xs-4',
-            validators: {
-                notEmpty: {
-                    message: 'The description required'
-                },
-            }
-        },
-        pollIndex = 0;
+  $('.addButton').click(function() {
+    var currLoc = $('#title').data("options");
+    if(currLoc === 1){
+      $('.minusButton').removeClass("hide");
+    }
+    if(currLoc === 5){
+      $('.addButton').addClass("hide");
+    }
+    var newLoc = ($('#title').data("options")+1);
+    $('#pollTemplate'+newLoc).removeClass("hide");
+    $('#title').data("options", newLoc);
+    console.log($('#title').data("options"));
+  });
 
-    $('#pollForm')
-        .formValidation({
-            framework: 'bootstrap',
-            icon: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                'option': optionValidators,
-                'description': descriptionValidators
-            }
-        })
-
-        // Add button click handler
-        .on('click', '.addButton', function() {
-            pollIndex++;
-            var $template = $('#pollTemplate'),
-                $clone    = $template
-                                .clone()
-                                .removeClass('hide')
-                                .removeAttr('id')
-                                .attr('poll-index', pollIndex)
-                                .insertBefore($template);
-
-            // Update the name attributes
-            $clone
-                .find('[name="option"]').attr('name', 'book[' + bookIndex + '].title').end()
-                .find('[name="description"]').attr('name', 'book[' + bookIndex + '].isbn').end()
-                .find('[name="price"]').attr('name', 'book[' + bookIndex + '].price').end();
-
-            // Add new fields
-            // Note that we also pass the validator rules for new field as the third parameter
-            $('#pollForm')
-                .formValidation('addField', 'book[' + bookIndex + '].title', optionValidators)
-                .formValidation('addField', 'book[' + bookIndex + '].isbn', descriptionValidators)
-
-        })
-
-        // Remove button click handler
-        .on('click', '.removeButton', function() {
-            var $row  = $(this).parents('.form-group'),
-                index = $row.attr('data-book-index');
-
-            // Remove fields
-            $('#bookForm')
-                .formValidation('removeField', $row.find('[name="book[' + index + '].title"]'))
-                .formValidation('removeField', $row.find('[name="book[' + index + '].isbn"]'))
-                .formValidation('removeField', $row.find('[name="book[' + index + '].price"]'));
-
-            // Remove element containing the fields
-            $row.remove();
-        });
-});
+  $('.minusButton').click(function() {
+    var currLoc = $('#title').data("options");
+    if(currLoc === 2){
+      $('.minusButton').addClass("hide");
+    }
+    if(currLoc === 6){
+      $('.addButton').removeClass("hide");
+    }
+    var newLoc = ($('#title').data("options")-1);
+    $('#pollTemplate'+currLoc).addClass("hide");
+    $('#title').data("options", newLoc);
+    console.log($('#title').data("options"));
+  });
 </script>
-
-
-<!--   </main> -->
+</main>
   </body>
 </html>

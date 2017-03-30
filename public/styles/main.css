@@ -15,4 +15,7 @@ body {
   width: 100%;
   z-index: 3; }
 
+#draggablePanelList .panel-heading {
+  cursor: move; }
+
 /*# sourceMappingURL=main.css.map */

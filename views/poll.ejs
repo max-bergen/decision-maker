@@ -2,16 +2,57 @@
 <html lang="en">
   <head>
     <title>Vote on a Poll</title>
-
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <% include partials/_header %>
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <div class="container">
+
+      <h1>Poll Title</h1>
+      <h2>Rank your choices, from most to least preferred</h2>
+      <ul id="draggablePanelList" class="list-unstyled">
+        <li class="panel panel-info">
+          <div class="panel-heading">You can drag this panel.</div>
+          <div class="panel-body">Content here ...</div>
+        </li>
+        <li class="panel panel-info">
+          <div class="panel-heading">You can drag this panel too.</div>
+          <div class="panel-body">More content here...</div>
+        </li>
+        <li class="panel panel-info">
+          <div class="panel-heading">You can drag this panel too.</div>
+          <div class="panel-body">More blah content here...</div>
+        </li>
+        <li class="panel panel-info">
+          <div class="panel-heading">You can drag this panel too.</div>
+          <div class="panel-body">Another content panel here...</div>
+        </li>
+      </ul>
+    </div>
+
+    <form id="pollForm" action="/user/poll" method="POST" class="form-horizontal">
+      <button class="btn btn-default" type="submit">Vote</button>
+    </form>
   </body>
 </html>
+
+<script>
+    $(document).ready(function() {
+        var panelList = $('#draggablePanelList');
+
+        panelList.sortable({
+            // Only make the .panel-heading child elements support dragging.
+            // Omit this to make then entire <li>...</li> draggable.
+            handle: '.panel-heading',
+            update: function() {
+                $('.panel', panelList).each(function(index, elem) {
+                     var $listItem = $(elem),
+                         newIndex = $listItem.index();
+
+                     // Persist the new indices.
+                });
+            }
+        });
+    });
+</script>

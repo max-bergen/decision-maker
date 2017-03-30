@@ -28,8 +28,7 @@
       <input class= ".formcontrol" name="option1" type= "text" placeholder="Option"/>
       </div>
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description1" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description1" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -41,8 +40,7 @@
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description2" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description2" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -54,8 +52,7 @@
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description3" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description3" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -66,8 +63,7 @@
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description4" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description4" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -79,8 +75,7 @@
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description5" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description5" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -92,8 +87,7 @@
       </div>
 
       <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description6" type= "text">Description
-        </textarea>
+        <textarea class= ".formcontrol" name="description6" type="text" placeholder="Description"></textarea>
       </div>
     </div>
 
@@ -136,6 +130,8 @@
       $('.addButton').removeClass("hide");
     }
     var newLoc = ($('#title').data("options")-1);
+    $('#pollTemplate'+currLoc).find('input').val('');
+    $('#pollTemplate'+currLoc).find('textarea').val('');
     $('#pollTemplate'+currLoc).addClass("hide");
     $('#title').data("options", newLoc);
     console.log($('#title').data("options"));

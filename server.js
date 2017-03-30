@@ -50,6 +50,7 @@ app.post("/", (req, res) => {
   // posts create form data to database
   const adminID = generateRandomString();
   const userID = generateRandomString();
+  let optionArray = [];
 
   const newPoll = {
    email: req.body.email,
@@ -58,12 +59,22 @@ app.post("/", (req, res) => {
    userUrl: userID,
    voteCount: 0
   }
-  const option = {
-   option: req.body.option,
-   description: req.body.description,
-   submitCount: 0
- }
-  addToPoll(newPoll, option);
+
+  for (let i = 1; i <= 6; i++){
+    let currOption = "option" + i;
+    let currDescript = "description" + i;
+    if (req.body[currOption]) {
+      let option = {
+        option: req.body[currOption],
+        description: req.body[currDescript],
+        submitCount: 0
+      }
+      optionArray.push(option);
+    } else {
+      break;
+    }
+  }
+  addToPoll(newPoll, optionArray);
   mailGun(req.body.email, req.body.title, adminID, userID);
 });
 

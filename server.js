@@ -91,8 +91,9 @@ app.get("/admin/:adminID", (req, res) => {
 
 app.get("/user/:userID", (req, res) => {
   let poll = userQuery(req.params.userID);
-  poll.then(function(result) {
-    res.render("poll", result);
+  poll.then(function(options) {
+    let templateOptions = {options: options};
+    res.render("poll", templateOptions);
   });
 });
 

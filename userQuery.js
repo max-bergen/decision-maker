@@ -20,7 +20,7 @@ module.exports = function queryPoll(userUrl) {
 function queryOptions(pollObj) {
   return new Promise((resolve, reject) => {
     let optionsArr = [];
-    knex.select('option', 'description').from('options')
+    knex.select('id', 'option', 'description').from('options')
       .where('poll_id', '=', pollObj.id)
       .asCallback(function(err, rows) {
         if (err) return console.error(err);

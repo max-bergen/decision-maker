@@ -4,7 +4,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 
 module.exports = function queryPoll(userUrl) {
- return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     knex.select('id', 'title').from('poll')
       .where('user_url', '=', userUrl)
       .asCallback(function(err, rows) {

@@ -16,6 +16,9 @@ const knexLogger  = require('knex-logger');
 
 const addToPoll   = require('./poll');
 const userQuery   = require('./userQuery');
+const updateSubmitCount   = require('./update-submit-count');
+const findSubmitCount = require('./find-submit-count');
+
 
 const mailGun     = require("./public/scripts/mailgun");
 
@@ -97,8 +100,14 @@ app.get("/user/:userID", (req, res) => {
   });
 });
 
-app.post("/user/:userID", (req, res) => {
+app.post("/user", (req, res) => {
   // posts result form data to database
+  req.body.submit.forEach(function(vote) {
+    let oldCount = findSubmitCount(vote.optionID);
+    oldCount.then(function(result) {
+      updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result));
+    });
+  })
   res.redirect("/submitted");
 });
 

@@ -9,35 +9,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <div class="container">
 
-      <h1>Poll Title</h1>
+      <h1><%= (options[0].title) %></h1>
       <h2>Rank your choices, from most to least preferred</h2>
       <ol id="draggablePanelList" class="list-unstyled">
-        <li class="panel panel-info">
-          <div class="panel-heading">You can drag this panel.</div>
-          <div class="panel-body">Content here ...</div>
-        </li>
-        <li class="panel panel-info">
-          <div class="panel-heading">You can drag this panel too.</div>
-          <div class="panel-body">More content here...</div>
-        </li>
-        <li class="panel panel-info">
-          <div class="panel-heading">You can drag this panel too.</div>
-          <div class="panel-body">More blah content here...</div>
-        </li>
-        <li class="panel panel-info">
-          <div class="panel-heading">You can drag this panel too.</div>
-          <div class="panel-body">Another content panel here...</div>
-        </li>
+        <% options.forEach(function(prop){ %>
+          <li id="<%= prop.optionID %>" class="panel panel-info">
+            <div class="panel-heading"><%= prop.option; %></div>
+            <div class="panel-body"><%= prop.description; %></div>
+          </li>
+        <% }); %>
       </ol>
 
       <div>
-        <form id="voteForm" action="/user/poll" method="POST" class="form-horizontal">
+        <form id="voteForm" action="/user/post" method="POST" class="form-horizontal">
         <button class="btn btn-default" type="submit">Vote</button>
       </form>
      </div>
     </div>
-  </body>
-</html>
+
 
 <script>
     $(document).ready(function() {
@@ -53,6 +42,9 @@
                      var $listItem = $(elem),
                          newIndex = $listItem.index();
                         console.log(newIndex);
+                        var listLength = $('#draggablePanelList li').length;
+                        var voteCalc = listLength - newIndex;
+
                      // Persist the new indices.
                 });
 
@@ -61,7 +53,19 @@
         });
 
 
-        $('.voteForm').on('submit', function(){
+        $('#voteForm').on('submit', function(event){
+          event.preventDefault();
+          var listLength = $('#draggablePanelList li').length;
+          $('.panel', panelList).each(function(index, elem) {
+            var $listItem = $(elem), newIndex = $listItem.index();
+            console.log($listItem.attr("id") + ":" + (listLength - newIndex));
+          });
+
+          // var voteCalc = listLength - newIndex;
+          console.log("==============");
+          // options.forEach(function(prop){
+          //   console.log(prop.title + ":");
+          // });
           //assign new index to each option
           //calculate rank
           //assign rank to each option, update in database
@@ -70,3 +74,5 @@
     });
 
 </script>
+  </body>
+</html>

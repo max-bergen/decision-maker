@@ -11,7 +11,7 @@
 
       <h1>Poll Title</h1>
       <h2>Rank your choices, from most to least preferred</h2>
-      <ul id="draggablePanelList" class="list-unstyled">
+      <ol id="draggablePanelList" class="list-unstyled">
         <li class="panel panel-info">
           <div class="panel-heading">You can drag this panel.</div>
           <div class="panel-body">Content here ...</div>
@@ -28,10 +28,10 @@
           <div class="panel-heading">You can drag this panel too.</div>
           <div class="panel-body">Another content panel here...</div>
         </li>
-      </ul>
+      </ol>
 
       <div>
-        <form id="pollForm" action="/user/poll" method="POST" class="form-horizontal">
+        <form id="voteForm" action="/user/poll" method="POST" class="form-horizontal">
         <button class="btn btn-default" type="submit">Vote</button>
       </form>
      </div>
@@ -42,6 +42,7 @@
 <script>
     $(document).ready(function() {
         var panelList = $('#draggablePanelList');
+        console.log($('#draggablePanelList li').length);
 
         panelList.sortable({
             // Only make the .panel-heading child elements support dragging.
@@ -51,10 +52,21 @@
                 $('.panel', panelList).each(function(index, elem) {
                      var $listItem = $(elem),
                          newIndex = $listItem.index();
-
+                        console.log(newIndex);
                      // Persist the new indices.
                 });
+
             }
+
+        });
+
+
+        $('.voteForm').on('submit', function(){
+          //assign new index to each option
+          //calculate rank
+          //assign rank to each option, update in database
+
         });
     });
+
 </script>

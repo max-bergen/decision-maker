@@ -1,14 +1,9 @@
 body {
-  background-color: #EEE; }
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  background-color: #fff; }
   body h1 {
     color: #244751; }
-
-.container {
-  padding-top: 80px; }
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100; }
 
 #nav-bar {
   position: fixed;
@@ -17,5 +12,15 @@ body {
 
 #draggablePanelList .panel-heading {
   cursor: move; }
+
+.pollForm {
+  padding-top: 40px; }
+
+.intro {
+  padding-top: 80px; }
+
+.center_div {
+  margin: 0 auto;
+  width: 70%; }
 
 /*# sourceMappingURL=main.css.map */

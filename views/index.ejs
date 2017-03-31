@@ -6,107 +6,126 @@
   </head>
 
   <body>
- <main class="container">
-  <form id="pollForm" action="/" method="POST" class="form-horizontal">
-    <div class= "form-group">
-      <label class="control-label col-xs-1" for="email">Email:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="email" type="email" placeholder="Enter email">
-      </div>
+
+    <div class="container-fluid intro">
+      <p> Pickled salvia synth hoodie tbh, unicorn disrupt meh mlkshk vaporware single-origin coffee. Vaporware jianbing williamsburg, disrupt venmo master cleanse hoodie pickled keffiyeh. Master cleanse listicle 90's yr, small batch trust fund iceland af beard kickstarter poke kombucha. Put a bird on it trust fund marfa pabst blog, heirloom mixtape kinfolk brooklyn ramps bicycle rights crucifix glossier. Banjo +1 lumbersexual sustainable godard, drinking vinegar artisan hella. Man braid synth occupy lomo chia kogi woke, lyft fam keytar air plant. Health goth occupy squid, freegan artisan chicharrones single-origin coffee.</p>
     </div>
-
-    <div class= "form-group">
-      <label class="control-label col-xs-1" for="email" data-options="1" id="title">Title:</label>
-      <div class='col-xs-4'>
-       <input class= ".formcontrol" name="title" type="text" placeholder="Title"/>
-      </div>
-    </div>
-
-    <div class= "form-group" id= "pollTemplate1">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-      <input class= ".formcontrol" name="option1" type= "text" placeholder="Option"/>
-      </div>
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description1" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
-
-    <!--Template for adding new field-->
-    <div class="form-group hide" id= "pollTemplate2">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option2" type= "text" placeholder="Option"/>
+    <div class="container pollForm center_div">
+    <form id="pollForm" action="/" method="POST" class="form-horizontal">
+      <div class= "form-group email-field">
+        <label class="control-label col-md-1" for="email">Email:</label>
+        <div class='col-md-8'>
+          <input class= "form-control email" name="email" type="email" placeholder="Enter email">
+        </div>
       </div>
 
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description2" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
-
-
-    <div class="form-group hide" id= "pollTemplate3">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option3" type= "text" placeholder="Option"/>
+      <div class= "form-group title-field">
+        <label class="control-label col-md-1" for="title" data-options="1" id="title">Title:</label>
+        <div class='col-md-8'>
+         <input class= "form-control title" name="title" type="text" placeholder="Title"/>
+        </div>
       </div>
 
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description3" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
-
-    <div class="form-group hide" id= "pollTemplate4">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option4" type= "text" placeholder="Option"/>
-      </div>
-
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description4" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
-
-
-    <div class="form-group hide" id= "pollTemplate5">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option5" type= "text" placeholder="Option"/>
+      <div class= "form-group" id= "pollTemplate1">
+        <label class="control-label col-md-1" for="option1">Option:</label>
+        <div class='col-md-4'>
+        <input class= "form-control" name="option1" type= "text" placeholder="Option"/>
+        </div>
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description1" type="text" placeholder="Description"></textarea>
+        </div>
       </div>
 
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description5" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
+      <!--Template for adding new field-->
+      <div class="form-group hide" id= "pollTemplate2">
+        <label class="control-label col-md-1" for="email">Option:</label>
+        <div class='col-md-4'>
+          <input class= "form-control" name="option2" type= "text" placeholder="Option"/>
+        </div>
 
-
-    <div class="form-group hide" id= "pollTemplate6">
-      <label class="control-label col-xs-1" for="email">Option:</label>
-      <div class='col-xs-4'>
-        <input class= ".formcontrol" name="option6" type= "text" placeholder="Option"/>
-      </div>
-
-      <div class='col-xs-4'>
-        <textarea class= ".formcontrol" name="description6" type="text" placeholder="Description"></textarea>
-      </div>
-    </div>
-
-     <div class= "form-group">
-      <div class="col-xs-5"><button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
-      </div>
-       <div class="col-xs-5"><button type="button" class="btn btn-default minusButton hide"><i class="fa fa-minus"></i></button>
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description2" type="text" placeholder="Description"></textarea>
+        </div>
       </div>
 
-    </div>
 
-    <div class= "form-group">
-      <div class="col-xs-5 col-xs-offset-1">
-        <button class="btn btn-default" type="submit">Submit</button>
+      <div class="form-group hide" id= "pollTemplate3">
+        <label class="control-label col-md-1" for="email">Option:</label>
+        <div class='col-md-4'>
+          <input class= "form-control" name="option3" type= "text" placeholder="Option"/>
+        </div>
+
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description3" type="text" placeholder="Description"></textarea>
+        </div>
       </div>
-    </div>
-  </form>
+
+      <div class="form-group hide" id= "pollTemplate4">
+        <label class="control-label col-md-1" for="email">Option:</label>
+        <div class='col-md-4'>
+          <input class= "form-control" name="option4" type= "text" placeholder="Option"/>
+        </div>
+
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description4" type="text" placeholder="Description"></textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group hide" id= "pollTemplate5">
+        <label class="control-label col-md-1" for="email">Option:</label>
+        <div class='col-md-4'>
+          <input class= "form-control" name="option5" type= "text" placeholder="Option"/>
+        </div>
+
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description5" type="text" placeholder="Description"></textarea>
+        </div>
+      </div>
+
+
+      <div class="form-group hide" id= "pollTemplate6">
+        <label class="control-label col-md-1" for="email">Option:</label>
+        <div class='col-md-4'>
+          <input class= "form-control" name="option6" type= "text" placeholder="Option"/>
+        </div>
+
+        <div class='col-md-4'>
+          <textarea class= "form-control" name="description6" type="text" placeholder="Description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group col-md-offset-1">
+        <span class= "btn-group">
+        <div class= "row">
+          <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
+          <button type="button" class="btn btn-default minusButton hide"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-default col-md-offset-1" type="submit">Submit</button>
+          </div>
+        </span>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
 
 <script>
+
+  //adds has-error class to empty input fields
+  $('#pollForm').on('submit', function(event) {
+    $('.email-field').removeClass("has-error");
+    $('.title-field').removeClass("has-error");
+
+    if ( ($('.email').val())  === ""){
+      $('.email-field').addClass("has-error");
+    }
+     if ( ($('.title').val())  === ""){
+      console.log("email empty");
+      $('.title-field').addClass("has-error");
+    }
+
+  });
+  //Plus and minus buttons for adding and removing new option field
   $('.addButton').click(function() {
     var currLoc = $('#title').data("options");
     if(currLoc === 1){
@@ -136,7 +155,7 @@
     $('#title').data("options", newLoc);
     console.log($('#title').data("options"));
   });
+
 </script>
-</main>
-  </body>
-</html>
+
+

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,IAAK;EACH,gBAAgB,EAAE,IAAI;EAEtB,OAAG;IACD,KAAK,EAAE,OAAO;;AAKlB,UAAU;EAET,WAAW,EAAE,IAAI;;AAIlB,IAAK;EACH,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG;;ACjBlB,QAAS;EACP,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC;;ACHX,kCAAmC;EAC5B,MAAM,EAAE,IAAI",
-"sources": ["../../styles/scss/_layout.scss","../../styles/scss/_nav.scss","../../styles/scss/_poll.scss"],
+"mappings": "AAAA,IAAK;EACH,WAAW,EAAE,wBAAwB;EACrC,WAAW,EAAE,GAAG;EAEhB,gBAAgB,EAAE,IAAI;EAEtB,OAAG;IACD,KAAK,EAAE,OAAO;;ACPlB,QAAS;EACP,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,OAAO,EAAE,CAAC;;ACHX,kCAAmC;EAC5B,MAAM,EAAE,IAAI;;ACDpB,SAAS;EACR,WAAW,EAAE,IAAI;;AAGlB,MAAM;EACJ,WAAW,EAAE,IAAI;;AAGnB,WAAW;EACP,MAAM,EAAE,MAAM;EACd,KAAK,EAAC,GAAG",
+"sources": ["../../styles/scss/_layout.scss","../../styles/scss/_nav.scss","../../styles/scss/_poll.scss","../../styles/scss/_newpoll.scss"],
 "names": [],
 "file": "main.css"
 }

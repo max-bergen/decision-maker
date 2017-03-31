@@ -91,8 +91,9 @@ app.get("/admin/:adminID", (req, res) => {
 
 app.get("/user/:userID", (req, res) => {
   let poll = userQuery(req.params.userID);
-  console.log("================");
-  poll.then(res.render("poll", poll));
+  poll.then(function(result) {
+    res.render("poll", result);
+  });
 });
 
 app.post("/user/:userID", (req, res) => {

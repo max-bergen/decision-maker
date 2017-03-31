@@ -1,5 +1,11 @@
+body,html {
+  height: 100%;
+}
 body {
-  background-color: #EEE;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  background-color: #fff;
+  padding-top: 50px;
 
   h1 {
     color: #244751;
@@ -7,13 +13,5 @@ body {
 }
 
 
-.container{
-
- padding-top: 80px;
-}
 
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
-}

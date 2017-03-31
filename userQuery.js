@@ -26,5 +26,3 @@ knex.select('option', 'description').from('options')
   })
 }
 
-queryPoll('zwhhzo74ku');
-

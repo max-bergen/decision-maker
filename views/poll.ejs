@@ -55,22 +55,21 @@
 
         $('#voteForm').on('submit', function(event){
           event.preventDefault();
+          var submitArray = [];
           var listLength = $('#draggablePanelList li').length;
           $('.panel', panelList).each(function(index, elem) {
             var $listItem = $(elem), newIndex = $listItem.index();
-            console.log($listItem.attr("id") + ":" + (listLength - newIndex));
+            submitArray.push({optionID: $listItem.attr("id"), submitCount: (listLength - newIndex)});
           });
-
-          // var voteCalc = listLength - newIndex;
-          console.log("==============");
-          // options.forEach(function(prop){
-          //   console.log(prop.title + ":");
-          // });
-          //assign new index to each option
-          //calculate rank
-          //assign rank to each option, update in database
-
-        });
+          // console.log(submitArray);
+          $.ajax({
+            url: '/user',
+            method: 'POST',
+            data: {
+              submit: submitArray
+            }
+          });
+    });
     });
 
 </script>

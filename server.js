@@ -15,6 +15,8 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 const addToPoll   = require('./poll');
+const userQuery   = require('./userQuery');
+
 const mailGun     = require("./public/scripts/mailgun");
 
 // Seperated Routes for each Resource
@@ -87,15 +89,13 @@ app.get("/admin/:adminID", (req, res) => {
   res.render("admin");
 });
 
-
-//("/user/:userID")
-app.get("/user/poll", (req, res) => {
-  //Code to get poll at specific userID
-  res.render("poll");
+app.get("/user/:userID", (req, res) => {
+  let poll = userQuery(req.params.userID);
+  console.log("================");
+  poll.then(res.render("poll", poll));
 });
 
-//("/user/:userID")
-app.post("/user/poll", (req, res) => {
+app.post("/user/:userID", (req, res) => {
   // posts result form data to database
   res.redirect("/submitted");
 });

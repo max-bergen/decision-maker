@@ -18,11 +18,13 @@ const addToPoll   = require('./poll');
 const userQuery   = require('./userQuery');
 const updateSubmitCount   = require('./update-submit-count');
 const findSubmitCount = require('./find-submit-count');
+const findAdminEmail = require('./findAdminEmail');
+
 const adminQueryPoll = require('./adminQuery');
 
 
-
-const mailGun     = require("./public/scripts/mailgun");
+const submitMailgun     = require("./public/scripts/submitMailgun");
+const initialMailgun     = require("./public/scripts/initialMailgun");
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -82,7 +84,7 @@ app.post("/", (req, res) => {
     }
   }
   addToPoll(newPoll, optionArray);
-  mailGun(req.body.email, req.body.title, adminID, userID);
+  initialMailgun(req.body.email, req.body.title, adminID, userID);
 });
 
 app.get("/submitted", (req, res) => {
@@ -107,6 +109,13 @@ app.get("/user/:userID", (req, res) => {
 
 app.post("/user", (req, res) => {
   // posts result form data to database
+  let adminEmail = findAdminEmail(req.body.submit[0].optionID);
+  adminEmail.then(function(result) {
+    submitMailgun(result.email, result.url)
+  })
+
+
+
   req.body.submit.forEach(function(vote) {
     let oldCount = findSubmitCount(vote.optionID);
     oldCount.then(function(result) {

@@ -112,8 +112,11 @@ app.post("/user", (req, res) => {
     oldCount.then(function(result) {
       updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result));
     });
-  });
-  res.redirect("/submitted");
+
+  })
+
+ res.send({redirect: '/submitted'});
+
 });
 
 

@@ -2,10 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
-const addToPoll   = require('../poll');
-const initialMailgun     = require("../public/scripts/initialMailgun");
 
 module.exports = (knex) => {
+const addToPoll   = require('../db-func/poll');
+const initialMailgun     = require("../public/scripts/initialMailgun");
+
 
   router.get("/", (req, res) => {
     res.render("index");
@@ -39,7 +40,7 @@ module.exports = (knex) => {
         break;
       }
     }
-    addToPoll(newPoll, optionArray);
+    addToPoll(newPoll, optionArray, knex);
     initialMailgun(req.body.email, req.body.title, adminID, userID);
   });
 

@@ -1,4 +1,4 @@
-module.exports = function updateSubmitCount(id, newCount) {
+module.exports = function updateSubmitCount(id, newCount, knex) {
 
   knex('options')
     .where('id', '=', id)

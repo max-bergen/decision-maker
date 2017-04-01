@@ -1,11 +1,11 @@
-module.exports = function adminQueryPoll(userUrl) {
+module.exports = function adminQueryPoll(userUrl, knex) {
   return new Promise((resolve, reject) => {
 
     knex.select('id', 'title', 'vote_count').from('poll')
       .where('admin_url', '=', userUrl)
       .asCallback(function(err, rows) {
         if (err) return reject(err);
-        let adminQuery = adminQueryOptions({id: rows[0].id, title: rows[0].title, vote_count: rows[0].vote_count});
+        let adminQuery = adminQueryOptions({id: rows[0].id, title: rows[0].title, vote_count: rows[0].vote_count}, knex);
         adminQuery.then(function(result) {
           resolve(result);
         })
@@ -13,7 +13,7 @@ module.exports = function adminQueryPoll(userUrl) {
  })
 }
 
-function adminQueryOptions(pollObj) {
+function adminQueryOptions(pollObj, knex) {
   return new Promise((resolve, reject) => {
   let optionsArr = [];
   knex.select('*').from('options')

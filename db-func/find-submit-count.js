@@ -1,4 +1,4 @@
-module.exports = function findSubmitCount(optionId) {
+module.exports = function findSubmitCount(optionId, knex) {
   let submitCountArr = [];
   return new Promise((resolve, reject) => {
     knex.select('*').from('options')

@@ -1,8 +1,3 @@
-require('dotenv').config();
-const ENV         = process.env.ENV || "development";
-const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
-
 module.exports = function queryPoll(userUrl) {
   return new Promise((resolve, reject) => {
     knex.select('id', 'title').from('poll')

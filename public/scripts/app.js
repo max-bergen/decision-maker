@@ -11,6 +11,8 @@ $(document).ready(function() {
     }
      if ( ($('.title').val())  === ""){
       $('.title-field').addClass("has-error");
+    }else{
+      $('.poll-success').removeClass("hide");
     }
 
   });
@@ -74,8 +76,6 @@ $(document).ready(function() {
         submit: submitArray
       }
     });
-
-   $('.vote').addClass('hide');
    $('#thankyou').removeClass('hide');
   });
 

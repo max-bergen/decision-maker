@@ -3,12 +3,10 @@
   <head>
     <title>Poll Admin</title>
         <% include partials/_header %>
-
   </head>
 
   <body>
    <h1><%= (poll[0].title) %></h1>
-    <% console.log(poll); %>
 
     <%var newArray = poll.sort(function(a, b){ %>
     <% return b.submit_count - a.submit_count; %>

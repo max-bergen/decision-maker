@@ -8,7 +8,6 @@
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <div class="container vote">
-
       <h1><%= (options[0].title) %></h1>
       <h2>Rank your choices, from most to least preferred</h2>
       <ol id="draggablePanelList" class="list-unstyled">
@@ -19,78 +18,14 @@
           </li>
         <% }); %>
       </ol>
-
       <div>
-
-
         <form id="voteForm" action="/users" method="POST" class="form-horizontal">
-
-
         <button class="btn btn-default" type="submit">Vote</button>
       </form>
-
       <div class="container-fluid thankyou hide" id="thankyou">
         <h1>Thanks for your vote!</h1>
       </div>
      </div>
     </div>
-
-
-<script>
-    $(document).ready(function() {
-        var panelList = $('#draggablePanelList');
-        console.log($('#draggablePanelList li').length);
-
-        panelList.sortable({
-            // Only make the .panel-heading child elements support dragging.
-            // Omit this to make then entire <li>...</li> draggable.
-            handle: '.panel-heading',
-            update: function() {
-                $('.panel', panelList).each(function(index, elem) {
-                     var $listItem = $(elem),
-                         newIndex = $listItem.index();
-                        console.log(newIndex);
-                        var listLength = $('#draggablePanelList li').length;
-                        var voteCalc = listLength - newIndex;
-
-                     // Persist the new indices.
-                });
-
-            }
-
-        });
-
-
-        $('#voteForm').on('submit', function(event){
-
-          event.preventDefault();
-          var submitArray = [];
-          var listLength = $('#draggablePanelList li').length;
-          $('.panel', panelList).each(function(index, elem) {
-            var $listItem = $(elem), newIndex = $listItem.index();
-            submitArray.push({optionID: $listItem.attr("id"), submitCount: (listLength - newIndex)});
-          });
-          // console.log(submitArray);
-          $.ajax({
-            url: '/user',
-            method: 'POST',
-            data: {
-              submit: submitArray
-            }
-
-          //   success: (data, textStatus, jqXHR) ->
-          //   if typeof data.redirect === 'string'
-          //           window.location = data.redirect
-
-           });
-
-         $('.vote').addClass('hide');
-         $('#thankyou').removeClass('hide');
-
-    });
-
-    });
-
-</script>
   </body>
 </html>

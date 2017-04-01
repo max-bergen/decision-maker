@@ -15,12 +15,12 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 const addToPoll   = require('./poll');
-const userQuery   = require('./userQuery');
-const updateSubmitCount   = require('./update-submit-count');
-const findSubmitCount = require('./find-submit-count');
-const findAdminEmail = require('./findAdminEmail');
+const userQuery   = require('./db-func/user-query');
+const updateSubmitCount   = require('./db-func/update-submit-count');
+const findSubmitCount = require('./db-func/find-submit-count');
+const findAdminEmail = require('./db-func/find-admin-email');
 
-const adminQueryPoll = require('./adminQuery');
+const adminQueryPoll = require('./db-func/admin-query');
 
 
 const submitMailgun     = require("./public/scripts/submitMailgun");

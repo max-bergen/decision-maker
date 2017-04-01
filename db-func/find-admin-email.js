@@ -1,4 +1,4 @@
-module.exports = function findAdminEmail(optionId) {
+module.exports = function findAdminEmail(optionId, knex) {
   let submitCountArr = [];
   return new Promise((resolve, reject) => {
     knex.select('*').from('options')

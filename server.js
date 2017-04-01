@@ -18,6 +18,8 @@ const addToPoll   = require('./poll');
 const userQuery   = require('./userQuery');
 const updateSubmitCount   = require('./update-submit-count');
 const findSubmitCount = require('./find-submit-count');
+const adminQueryPoll = require('./adminQuery');
+
 
 
 const mailGun     = require("./public/scripts/mailgun");
@@ -88,8 +90,11 @@ app.get("/submitted", (req, res) => {
 });
 
 app.get("/admin/:adminID", (req, res) => {
-  //Code to generate page at specific admin link
-  res.render("admin");
+  let admin = adminQueryPoll(req.params.adminID);
+  admin.then(function(poll) {
+    let templateOptions = {poll: poll};
+    res.render("admin", templateOptions);
+  });
 });
 
 app.get("/user/:userID", (req, res) => {
@@ -107,6 +112,7 @@ app.post("/user", (req, res) => {
     oldCount.then(function(result) {
       updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result));
     });
+
   })
 
  res.send({redirect: '/submitted'});

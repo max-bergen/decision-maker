@@ -22,7 +22,7 @@
 
       <div>
 
-        <form id="voteForm" action="/submitted" method="GET" class="form-horizontal">
+        <form id="voteForm" action="/users" method="POST" class="form-horizontal">
 
         <button class="btn btn-default" type="submit">Vote</button>
       </form>
@@ -70,9 +70,6 @@
             data: {
               submit: submitArray
             }
-            success: (data, textStatus, jqXHR) ->
-            if typeof data.redirect === 'string'
-                    window.location = data.redirect
           });
     });
     });

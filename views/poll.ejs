@@ -7,7 +7,7 @@
 
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <div class="container">
+    <div class="container vote">
 
       <h1><%= (options[0].title) %></h1>
       <h2>Rank your choices, from most to least preferred</h2>
@@ -22,10 +22,14 @@
 
       <div>
 
-        <form id="voteForm" action="/submitted" method="GET" class="form-horizontal">
-
+      <!--   <form id="voteForm" action="/submitted" method="GET" class="form-horizontal"> -->
+        <form id="voteForm" action="/users" method="POST" class="form-horizontal">
         <button class="btn btn-default" type="submit">Vote</button>
       </form>
+
+      <div class="container-fluid thankyou hide" id="thankyou">
+        <h1>Thanks for your vote!</h1>
+      </div>
      </div>
     </div>
 
@@ -56,6 +60,7 @@
 
 
         $('#voteForm').on('submit', function(event){
+
           event.preventDefault();
           var submitArray = [];
           var listLength = $('#draggablePanelList li').length;
@@ -70,11 +75,16 @@
             data: {
               submit: submitArray
             }
-            success: (data, textStatus, jqXHR) ->
-            if typeof data.redirect === 'string'
-                    window.location = data.redirect
-          });
+          //   success: (data, textStatus, jqXHR) ->
+          //   if typeof data.redirect === 'string'
+          //           window.location = data.redirect
+
+           });
+
+         $('.vote').addClass('hide');
+         $('#thankyou').removeClass('hide');
     });
+
     });
 
 </script>

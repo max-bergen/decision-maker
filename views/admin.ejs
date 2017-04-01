@@ -10,19 +10,16 @@
    <h1><%= (poll[0].title) %></h1>
     <% console.log(poll); %>
 
-
     <%var newArray = poll.sort(function(a, b){ %>
     <% return b.submit_count - a.submit_count; %>
     <% });%>
 
     <% newArray.forEach(function(result, index){ %>
-    <p><%= result.option; %></p>
-    <p><%= result.description; %></p>
-    <p><%= index +1 %>
-    <p><%= result.submit_count; %></p>
+    <p>Option: <%= result.option; %></p>
+    <p>Description: <%= result.description; %></p>
+    <p>Rank: <%= index +1 %>
+    <p>Total Points: <%= result.submit_count; %></p>
     <%});%>
-
-
 
   </body>
 </html>

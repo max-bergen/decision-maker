@@ -30,8 +30,7 @@ const updateSubmitCount = require('../db-func/update-submit-count');
         updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result), knex);
       });
     })
-    res.send({redirect: '/submitted'});
-  })
+  });
 
   return router;
 }

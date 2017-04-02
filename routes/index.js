@@ -13,43 +13,46 @@ const initialMailgun     = require("../public/scripts/initialMailgun");
   });
 
   router.post("/", (req, res) => {
-    // posts create form data to database
-    const adminID = generateRandomString();
-    const userID = generateRandomString();
-    let optionArray = [];
+    if (!req.body.title || !req.body.email || !req.body.option1){
+      return;
+    } else {
+      // posts create form data to database
+      const adminID = generateRandomString();
+      const userID = generateRandomString();
+      let optionArray = [];
 
-    const newPoll = {
-     email: req.body.email,
-     title: req.body.title,
-     adminUrl: adminID,
-     userUrl: userID,
-     voteCount: 0
-    }
-
-    for (let i = 1; i <= 6; i++){
-      let currOption = "option" + i;
-      let currDescript = "description" + i;
-      if (req.body[currOption]) {
-        let option = {
-          option: req.body[currOption],
-          description: req.body[currDescript],
-          submitCount: 0
-        }
-        optionArray.push(option);
-      } else {
-        break;
+      const newPoll = {
+       email: req.body.email,
+       title: req.body.title,
+       adminUrl: adminID,
+       userUrl: userID,
+       voteCount: 0
       }
+
+      for (let i = 1; i <= 6; i++){
+        let currOption = "option" + i;
+        let currDescript = "description" + i;
+        if (req.body[currOption]) {
+          let option = {
+            option: req.body[currOption],
+            description: req.body[currDescript],
+            submitCount: 0
+          }
+          optionArray.push(option);
+        } else {
+          break;
+        }
+      }
+      addToPoll(newPoll, optionArray, knex);
+      initialMailgun(req.body.email, req.body.title, adminID, userID);
+      res.redirect("/submitted");
     }
-    addToPoll(newPoll, optionArray, knex);
-    initialMailgun(req.body.email, req.body.title, adminID, userID);
   });
-
-
   return router;
 }
 
 function generateRandomString() {
-  const charset = "abcdefghijklmnopqrstuvwxyz0123456789";
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let rand = '';
 
   for (let i = 0; i < 10; i ++) {

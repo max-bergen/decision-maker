@@ -51,9 +51,9 @@ app.get('/admin/:admin', adminRoutes(knex));
 app.get('/user/:userID', userRoutes(knex));
 app.post('/user', userRoutes(knex));
 
-// app.get("/submitted", (req, res) => {
-//   res.render("submitted");
-// });
+app.get("/submitted", (req, res) => {
+  res.render("submitted");
+  });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

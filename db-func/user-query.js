@@ -1,3 +1,4 @@
+//
 module.exports = function queryPoll(userUrl, knex) {
   return new Promise((resolve, reject) => {
     knex.select('id', 'title').from('poll')

@@ -9,7 +9,7 @@ module.exports = (recipient, title, admin, user) => {
     from: 'Link-Generator@Decision-maker.com',
     to: recipient,
     subject: `${title} Poll Created`,
-    text: `Administrative Link: http://localhost:8080/admin/${admin}\nVoter Link: http://localhost:8080/user/${user}`
+    text: `Administrative Link: https://strawberry-crumble-41481.herokuapp.com/admin/${admin}\nVoter Link: https://strawberry-crumble-41481.herokuapp.com/user/${user}`
   };
 
   mailgun.messages().send(data, function (error, body) {

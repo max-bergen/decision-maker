@@ -9,7 +9,7 @@ module.exports = (recipient, url) => {
     from: 'Pole-Vote@Decision-maker.com',
     to: recipient,
     subject: `Vote on Pole`,
-    text: `Someone has voted on a pole. View here: http://localhost:8080/admin/${url}`
+    text: `Someone has voted on a pole. View here: https://strawberry-crumble-41481.herokuapp.com/admin/${url}`
   };
 
   mailgun.messages().send(data, function (error, body) {

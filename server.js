@@ -45,12 +45,13 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-
+//Runs routes when called, passes knex
 app.all('/', indexRoutes(knex));
 app.get('/admin/:admin', adminRoutes(knex));
 app.get('/user/:userID', userRoutes(knex));
 app.post('/user', userRoutes(knex));
 
+//Submitted route doesn't get its own route file due to small size
 app.get("/submitted", (req, res) => {
   res.render("submitted");
   });

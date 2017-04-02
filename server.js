@@ -18,7 +18,7 @@ const knexLogger  = require('knex-logger');
 
 const knex = require('knex')({
   client: 'pg',
-  connection: process.env.PG_CONNECTION_STRING,
+  connection: process.env.DATABASE_URL + '?ssl=true',
   searchPath: 'knex,public'
 });
 

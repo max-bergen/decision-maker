@@ -10,9 +10,17 @@ const sass        = require("node-sass-middleware");
 const app         = express();
 
 const knexConfig  = require("./knexfile");
-const knex        = require("knex")(knexConfig[ENV]);
+//const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
+
+
+const knex = require('knex')({
+  client: 'pg',
+  connection: process.env.DATABASE_URL + '?ssl=true',
+  searchPath: 'knex,public'
+});
 
 // Seperated Routes for each Resource
 const indexRoutes = require("./routes/index");

@@ -14,8 +14,6 @@ const knexConfig  = require("./knexfile");
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
-
-
 const knex = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL + '?ssl=true',

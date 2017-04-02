@@ -1,3 +1,5 @@
+//takes in the randomly generated string, representing the URL of the vote page, to query
+//the poll table in the database and return an array with object containing relevant information
 module.exports = function adminQueryPoll(userUrl, knex) {
   return new Promise((resolve, reject) => {
 

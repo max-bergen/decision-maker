@@ -5,16 +5,17 @@ $(document).ready(function() {
   $('#pollForm').on('submit', function(event) {
     $('.email-field').removeClass("has-error");
     $('.title-field').removeClass("has-error");
+    $('.option-field').removeClass("has-error");
 
     if ( ($('.email').val())  === ""){
       $('.email-field').addClass("has-error");
     }
-     if ( ($('.title').val())  === ""){
+    if ( ($('.title').val())  === ""){
       $('.title-field').addClass("has-error");
-    }else{
-      $('.poll-success').removeClass("hide");
     }
-
+    if ( ($('.option-field').val()) === ""){
+      $('.option-field').addClass("has-error");
+    }
   });
   //Plus and minus buttons for adding and removing new option field
   $('.addButton').click(function() {

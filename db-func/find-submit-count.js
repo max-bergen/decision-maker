@@ -6,7 +6,12 @@ module.exports = function findSubmitCount(optionId, knex) {
     .where('id', '=', optionId)
     .asCallback(function(err, rows) {
       if (err) return reject(err);
-      resolve (rows[0].submit_count);
+      knex.select('*').from('poll')
+      .where('id', '=', rows[0].poll_id)
+      .asCallback(function(err, rows2) {
+        if (err) return reject(err);
+        resolve({submitCount: rows[0].submit_count, voteCount: rows2[0].vote_count});
+      });
    })
   });
 }

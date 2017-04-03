@@ -9,10 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <div class="container vote">
       <h1><%= (options[0].title) %></h1>
-      <h2>Rank your choices, from most to least preferred</h2>
+      <h2 class="choices">Rank your choices, from most to least preferred</h2>
       <ol id="draggablePanelList" class="list-unstyled">
         <% options.forEach(function(prop){ %>
-          <li id="<%= prop.optionID %>" class="panel panel-info">
+          <li id="<%= prop.optionID %>" class="panel panel-info choices">
             <div class="panel-heading"><%= prop.option; %></div>
             <div class="panel-body"><%= prop.description; %></div>
           </li>
@@ -20,8 +20,8 @@
       </ol>
       <div>
         <form id="voteForm" action="/users" method="POST" class="form-horizontal">
-        <button class="btn btn-default" type="submit">Vote</button>
-      </form>
+          <button class="btn btn-default butt" type="submit">Vote</button>
+        </form>
       <div class="container-fluid thankyou hide" id="thankyou">
         <h1>Thanks for your vote!</h1>
       </div>

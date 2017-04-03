@@ -65,11 +65,12 @@ $(document).ready(function() {
 
     $(".butt").click(function(){
     $(".choices").hide();
-    });
-
-    $(".butt").click(function(){
     $(".butt").hide();
     });
+
+    // $(".butt").click(function(){
+    // $(".butt").hide();
+    // });
 
 
   $('#voteForm').on('submit', function(event){

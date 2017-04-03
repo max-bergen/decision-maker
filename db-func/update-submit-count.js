@@ -9,6 +9,3 @@ module.exports = function updateSubmitCount(id, newCount, knex) {
       });
     return;
 }
-
-
-

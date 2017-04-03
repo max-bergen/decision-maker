@@ -7,6 +7,8 @@ const findAdminEmail = require('../db-func/find-admin-email');
 const submitMailgun = require("../public/scripts/submitMailgun");
 const findSubmitCount = require('../db-func/find-submit-count');
 const updateSubmitCount = require('../db-func/update-submit-count');
+const updateVoteCount = require('../db-func/update-vote-count');
+
 
 module.exports = (knex) => {
   // pulls user poll and option data from DB and passes info to page
@@ -28,7 +30,9 @@ module.exports = (knex) => {
     req.body.submit.forEach(function(vote) {
       let oldCount = findSubmitCount(vote.optionID, knex);
       oldCount.then(function(result) {
-        updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result), knex);
+        updateSubmitCount(vote.optionID, Number(vote.submitCount) + Number(result.submitCount), knex);
+        updateVoteCount(vote.optionID,Number(result.voteCount) + 1, knex);
+
       });
     })
   });

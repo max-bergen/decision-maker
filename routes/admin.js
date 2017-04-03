@@ -11,6 +11,7 @@ module.exports = (knex) => {
     let admin = adminQueryPoll(req.params.adminID, knex);
     admin.then(function(poll) {
       let templateOptions = {poll: poll};
+      console.log(templateOptions);
       res.render("admin", templateOptions);
     });
   });

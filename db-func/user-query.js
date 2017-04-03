@@ -1,4 +1,5 @@
-//
+//takes unique poll url as input, checks options and poll tables, and returns array with object
+//containing all relevant information from database
 module.exports = function queryPoll(userUrl, knex) {
   return new Promise((resolve, reject) => {
     knex.select('id', 'title').from('poll')

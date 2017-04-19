@@ -12,7 +12,7 @@
       <h2 class="choices">Rank your choices, from most to least preferred</h2>
       <ol id="draggablePanelList" class="list-unstyled">
         <% options.forEach(function(prop){ %>
-          <li id="<%= prop.optionID %>" class="panel panel-info choices">
+          <li id="<%= prop.optionID %>" class="panel panel-info">
             <div class="panel-heading"><%= prop.option; %></div>
             <div class="panel-body"><%= prop.description; %></div>
           </li>
@@ -28,4 +28,7 @@
      </div>
     </div>
   </body>
+  <footer>
+    <% include partials/_footer%>
+  </footer>
 </html>

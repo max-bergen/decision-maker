@@ -1,3 +1,13 @@
+
+// const express = require('express');
+// var path = require('path');
+// var favicon = require('serve-favicon');
+// var app = express();
+// app.use(express.static('public'));
+
+
+// app.use(favicon(__dirname, '..'+'/public/favicon.ico'));
+
 $(document).ready(function() {
 
 // Scripts for index.ejs
@@ -67,11 +77,6 @@ $(document).ready(function() {
     $(".choices").hide();
     $(".butt").hide();
     });
-
-    // $(".butt").click(function(){
-    // $(".butt").hide();
-    // });
-
 
   $('#voteForm').on('submit', function(event){
     event.preventDefault();
